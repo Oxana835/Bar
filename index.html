@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mos Eisley Cantina. Tatooine's busiest watering hole</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./tailwind.config.js"></script>
+    <style>
+      .music-visualizer {
+        opacity: 0.9;
+        outline: 2px solid rgba(236, 72, 153, 0.9);
+        outline-offset: 2px;
+        box-shadow: 0 0 12px rgba(236, 72, 153, 0.5);
+        transition: opacity 120ms linear, box-shadow 120ms ease-out;
+      }
+
+      @keyframes lounge-neon-pulse {
+        0%, 100% {
+          opacity: 0.84;
+          filter: drop-shadow(0 0 6px rgba(236, 72, 153, 0.5));
+        }
+
+        50% {
+          opacity: 1;
+          filter: drop-shadow(0 0 20px rgba(236, 72, 153, 0.95));
+        }
+      }
+
+      .music-visualizer.is-playing {
+        animation: lounge-neon-pulse 1.8s ease-in-out infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .music-visualizer {
+          transition: none;
+        }
+
+        .music-visualizer.is-playing {
+          animation: none;
+          opacity: 0.9;
+          filter: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-slate-950 via-violet-950/40 to-amber-950/30 text-slate-100 antialiased">
+    <!-- Your header and hero go here -->
+   <header class="relative z-20 flex items-center justify-between gap-4 bg-slate-950/40 p-4 backdrop-blur-md md:gap-6 md:p-6">
+    <div class="flex items-center gap-3">
+      <img class="h-8 w-auto object-contain"src="cocktail-bar.jpg" alt="Cantina Badge">
+      <span class="text-lg font-bold text-white md:text-xl">Mos Eisley Cantina</span>
+    </div>
+    <button id="menu-toggle" class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 md:hidden" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-navigation">
+      <span class="sr-only">Open navigation menu</span>
+      <span class="flex w-5 flex-col gap-1.5" aria-hidden="true"><span class="h-0.5 w-full bg-current"></span><span class="h-0.5 w-full bg-current"></span><span class="h-0.5 w-full bg-current"></span></span>
+    </button>
+    <nav id="site-navigation" class="absolute left-0 right-0 top-full hidden flex-col gap-3 border-t border-white/10 bg-slate-950/95 p-4 shadow-xl md:static md:flex md:w-auto md:flex-row md:items-center md:gap-4 md:border-0 md:bg-transparent md:p-0 md:shadow-none" aria-label="Primary">
+      <a class="text-white-600 hover:text-red-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="#Features">Features</a>
+      <a class="text-white-600 hover:text-yellow-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="#Menu">Menu</a>
+      <a class="text-white-600 hover:text-green-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="#Live music">Live music</a>
+      <a class="text-white-600 hover:text-orange-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="#Sign in">Sign in</a>
+      <button class="relative inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-indigo-500/30 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:w-auto">
+        Reserve a booth</button>
+    </nav>
+  </header>
+    <main>
+        <section class="grid gap-10 px-6 py-16 md:grid-cols-2 md:items-center" id="Features">
+            <div class="space-y-6">
+                <p class="inline-block rounded bg-violet-950/40 px-2.5 py-1 text-xs font-medium">Open every night, 3 ABY</p>
+                <h1 class="text-3xl font-black uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-slate-400 drop-shadow-[0_5px_0_rgba(100,116,139,1)] filter font-extrabold style-relief">Find your watering hole on <span class="bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent font-extrabold">Tatooine</span></h1>
+                <p>Experience the lively atmosphere of Tatooine's most famous cantina, where you can enjoy exotic drinks, live music, and a diverse crowd of patrons from across the galaxy.</p>
+                <div class="flex flex-wrap gap-3">
+                <button class="relative inline-flex items-center justify-center px-6 py-3 font-semibold text-white transition-all duration-200 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    Reserve a booth
+                </button>
+                <button class="relative inline-flex items-center justify-center px-6 py-3 font-semibold text-white transition-all duration-200 bg-gradient-to-r from-bg-violet-950/40 to-bg-slate-950 rounded-xl shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    See Live music
+                </button>
+                </div>
+            </div>
+            <figure class="relative overflow-hidden rounded-xl bg-slate-900/50 p-4 backdrop-blur-sm ring-1 ring-white/10 shadow-inner">
+                <img id="cantina-image" src="unsplash-cantina.jpeg" alt="Cantina interior" class="music-visualizer w-full rounded-lg object-cover">
+                <figcaption class="mt-3 text-sm text-slate-400 text-center font-medium">Musique lounge de la cantina
+                </figcaption>
+                <audio id="lounge-audio" class="mt-3 w-full" controls preload="none" aria-label="Lecteur de musique lounge de la cantina">
+                  <source src="lounge%20musique.mp3" type="audio/mpeg">
+                  Votre navigateur ne prend pas en charge la lecture audio.
+                </audio>
+            </figure>
+        </section>
+        <section class="px-6 py-10 text-center">
+            <h2 class="text-violet-950 text-xl font-semibold" >What you find inside ?</h2>
+            <h1 class="text-xl text-white font-bold">A bouth for every kind of trouble</h1> 
+            <p class="text-green-950 text-xm font-semibold">Three things you can count on, every night you walk through the door</p>   
+
+        </section>
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 pb-16" aria-label="Cantina house policies">
+              <article class="rounded-xl bg-white/[0.03] border border-white/10 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-violet-300 hover:shadow-[0_0_28px_rgba(139,92,246,0.75)]">
+                <div class="size-12 rounded-xl bg-violet-500/10 ring-1 ring-violet-400/20 flex items-center justify-center text-xl text-violet-200 transition-all duration-300 hover:bg-pink-500/20 hover:text-pink-400 hover:ring-pink-400 hover:shadow-[0_0_18px_rgba(236,72,153,0.9)] hover:[-webkit-text-stroke:0.5px_black]" aria-hidden="true">♫</div>
+                <h3 class="mt-5 text-lg font-semibold transition-all duration-300 hover:text-pink-400 hover:[-webkit-text-stroke:0.5px_black] hover:[text-shadow:0_0_8px_rgba(236,72,153,1),0_0_20px_rgba(236,72,153,0.9)]">Live music nightly</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-300">Sunset to sunrise, loud enough to drown out a bounty hunter.</p>
+              </article>
+              <article class="rounded-xl bg-white/[0.03] border border-white/10 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-violet-300 hover:shadow-[0_0_28px_rgba(139,92,246,0.75)]">
+                <div class="size-12 rounded-xl bg-violet-500/10 ring-1 ring-violet-400/20 flex items-center justify-center text-xl text-violet-200 transition-all duration-300 hover:bg-pink-500/20 hover:text-pink-400 hover:ring-pink-400 hover:shadow-[0_0_18px_rgba(236,72,153,0.9)] hover:[-webkit-text-stroke:0.5px_black]" aria-hidden="true">✦</div>
+                <h3 class="mt-5 text-lg font-semibold transition-all duration-300 hover:text-pink-400 hover:[-webkit-text-stroke:0.5px_black] hover:[text-shadow:0_0_8px_rgba(236,72,153,1),0_0_20px_rgba(236,72,153,0.9)]">Smugglers welcome</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-300">No questions asked. Back booths, no records kept.</p>
+              </article>
+              <article class="rounded-xl bg-white/[0.03] border border-white/10 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-violet-300 hover:shadow-[0_0_28px_rgba(139,92,246,0.75)]">
+                <div class="size-12 rounded-xl bg-violet-500/10 ring-1 ring-violet-400/20 flex items-center justify-center text-xl text-violet-200 transition-all duration-300 hover:bg-pink-500/20 hover:text-pink-400 hover:ring-pink-400 hover:shadow-[0_0_18px_rgba(236,72,153,0.9)] hover:[-webkit-text-stroke:0.5px_black]" aria-hidden="true">⏻</div>
+                <h3 class="mt-5 text-lg font-semibold transition-all duration-300 hover:text-pink-400 hover:[-webkit-text-stroke:0.5px_black] hover:[text-shadow:0_0_8px_rgba(236,72,153,1),0_0_20px_rgba(236,72,153,0.9)]">Droids: see house policy</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-300">Limits on the floor. Power-down recommended.</p>
+              </article>
+            </section>
+    </main>
+    <footer class="flex items-center justify-between gam-6 p-6 bg-slate-950/40 backdrop-blur-md">
+    <nav class="flex items-center gap-4" aria-label="Primary">
+      <a class="text-white-600 hover:text-red-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="#Features">Features</a>
+      <a class="text-white-600 hover:text-yellow-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="#Menu">Menu</a>
+      <a class="text-white-600 hover:text-green-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="#Live music">Live music</a>
+      <a class="text-white-600 hover:text-orange-600 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950" href="#Sign in">Sign in</a>
+      <button class="relative inline-flex items-center justify-center px-6 py-3 font-semibold text-white transition-all duration-200 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+        Reserve a booth</button>
+    </nav>
+</footer>
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const siteNavigation = document.getElementById("site-navigation");
+
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+      menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation menu" : "Close navigation menu");
+      siteNavigation.classList.toggle("hidden", isExpanded);
+      siteNavigation.classList.toggle("flex", !isExpanded);
+    });
+
+    siteNavigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        siteNavigation.classList.add("hidden");
+        siteNavigation.classList.remove("flex");
+      });
+    });
+
+    const loungeAudio = document.getElementById("lounge-audio");
+    const cantinaImage = document.getElementById("cantina-image");
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let audioContext;
+    let analyser;
+    let frequencyData;
+    let animationFrame;
+
+    const resetVisualizer = () => {
+      if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = undefined;
+      }
+      cantinaImage.classList.remove("is-playing");
+      cantinaImage.style.opacity = "";
+      cantinaImage.style.boxShadow = "";
+    };
+
+    const updateVisualizer = () => {
+      if (loungeAudio.paused || motionPreference.matches || !analyser) {
+        resetVisualizer();
+        return;
+      }
+
+      analyser.getByteFrequencyData(frequencyData);
+      const bassBinCount = Math.min(18, frequencyData.length);
+      let bassEnergy = 0;
+
+      for (let index = 2; index < bassBinCount; index += 1) {
+        bassEnergy += frequencyData[index] ** 2;
+      }
+
+      const bassLevel = Math.sqrt(bassEnergy / Math.max(1, bassBinCount - 2)) / 255;
+      const pulse = Math.min(1, bassLevel * 8);
+      const glow = 0.35 + pulse * 0.65;
+      const blur = 8 + pulse * 18;
+      const outline = 1 + pulse * 2;
+
+      cantinaImage.style.boxShadow = `0 0 0 ${outline}px rgba(236, 72, 153, ${glow}), 0 0 ${blur}px rgba(236, 72, 153, ${glow})`;
+      animationFrame = window.requestAnimationFrame(updateVisualizer);
+    };
+
+    loungeAudio.addEventListener("play", async () => {
+      if (motionPreference.matches) {
+        return;
+      }
+
+      cantinaImage.classList.add("is-playing");
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) {
+        return;
+      }
+
+      try {
+        if (!audioContext) {
+          audioContext = new AudioContextClass();
+          analyser = audioContext.createAnalyser();
+          analyser.fftSize = 1024;
+          analyser.smoothingTimeConstant = 0.68;
+          const audioSource = audioContext.createMediaElementSource(loungeAudio);
+          audioSource.connect(analyser);
+          analyser.connect(audioContext.destination);
+          frequencyData = new Uint8Array(analyser.frequencyBinCount);
+        }
+
+        await audioContext.resume();
+        if (!loungeAudio.paused && !animationFrame) {
+          updateVisualizer();
+        }
+      } catch {
+        if (animationFrame) {
+          window.cancelAnimationFrame(animationFrame);
+          animationFrame = undefined;
+        }
+        cantinaImage.style.boxShadow = "";
+      }
+    });
+
+    loungeAudio.addEventListener("pause", resetVisualizer);
+    loungeAudio.addEventListener("ended", resetVisualizer);
+
+    motionPreference.addEventListener("change", (event) => {
+      if (event.matches) {
+        resetVisualizer();
+      } else if (!loungeAudio.paused) {
+        loungeAudio.dispatchEvent(new Event("play"));
+      }
+    });
+  </script>
+</body>
+</html>
