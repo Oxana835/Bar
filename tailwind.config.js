@@ -1,4 +1,5 @@
 const tailwindConfig = {
+  darkMode: 'class',
   theme: {
     extend: {
       keyframes: {
